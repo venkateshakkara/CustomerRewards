@@ -1,4 +1,4 @@
-# rewards-demo
+# rewards-demo-main
 
 The service populate h2 db with data.sql file
 
