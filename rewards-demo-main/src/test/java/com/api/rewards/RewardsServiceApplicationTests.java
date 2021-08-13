@@ -8,6 +8,7 @@ class RewardsServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		RewardsServiceApplication.main(new String[]{"TEST"});
 	}
 
 }
