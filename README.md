@@ -16,4 +16,4 @@ JDBC URL will be avaiable in the logs too.
 
 To Get All customers: curl -X GET -H 'Accept: application/json' -H 'Content-Type: application/json' -i http://localhost:7000/reward/getAllCustomers
 
-To get Customere having id = 500 curl -X GET -H 'Accept: application/json' -H 'Content-Type: application/json' -i http://localhost:7000/reward/getCustomers/500
+To get Customere having id = 500 curl -X GET -H 'Accept: application/json' -H 'Content-Type: application/json' -i http://localhost:7000/reward/getCustomerById/500
