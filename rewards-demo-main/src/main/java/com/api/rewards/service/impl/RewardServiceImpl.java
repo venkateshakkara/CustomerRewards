@@ -19,12 +19,12 @@ public class RewardServiceImpl implements RewardService {
  private CustomerRepository repository;
 
  public Customer getCustomerById(final long customerId) {
- log.debug("CustomerRepository getCustomerById executed");
- return repository.findById(customerId).orElse(null);
+  log.debug("CustomerRepository getCustomerById executed");
+  return repository.findById(customerId).orElse(null);
  }
  
  public List<Customer> getAllCustomers(){
- log.debug("CustomerRepository getAllCustomers executed");
- return repository.findAll();
+  log.debug("CustomerRepository getAllCustomers executed");
+  return repository.findAll();
  }
 }
