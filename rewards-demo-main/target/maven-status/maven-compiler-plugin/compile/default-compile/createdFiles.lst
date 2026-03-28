@@ -1,0 +1,6 @@
+com/api/rewards/repository/SaleRepository.class
+com/api/rewards/entity/Sale.class
+com/api/rewards/constants/CommonConstants.class
+com/api/rewards/dto/ReportDto.class
+com/api/rewards/service/ReportService.class
+com/api/rewards/RewardsServiceApplication.class
