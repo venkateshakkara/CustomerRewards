@@ -1,28 +1,24 @@
-# rewards-demo-main
+Reporting UI (React + Vite)
 
-The service populate h2 db with data.sql file
+Requirements:
+- Node 18+ (or recent LTS)
+- Your Spring Boot API running on http://localhost:8080 (default)
 
-Environment:
-JAVA 11
+1) Install
+   npm install
 
-To build the application run below command:
-mvn clean install
+2) Run (dev)
+   npm run dev
+   The app will be available at http://localhost:3000
 
-To run the service use below command:
-mvn spring-boot:run
+Configuration:
+- To change API base URL set environment variable VITE_API_BASE_URL.
+  Example: VITE_API_BASE_URL=http://localhost:8080 npm run dev
 
-Application will start on 7000 port.
+CORS:
+- If your Spring Boot app is at http://localhost:8080, enable CORS for the UI origin (http://localhost:3000). See the sample CorsConfig.java file included below.
 
-To view h2 DB console: 
-http://localhost:7000/h2-console
-
-JDBC URL will be avaiable in the logs too.
-
-To Get All customers:
-curl -X GET -H 'Accept: application/json' -H 'Content-Type: application/json' -i http://localhost:7000/reward/getAllCustomers
-
-To get Customere having id = 500
-curl -X GET -H 'Accept: application/json' -H 'Content-Type: application/json' -i http://localhost:7000/reward/getCustomerById/500
-
-
-
+Notes:
+- The UI expects the transactions endpoint to return a Spring Page with fields:
+  { content: [...], totalElements, totalPages, number, size }
+- The summary endpoint is GET /api/reports/summary
