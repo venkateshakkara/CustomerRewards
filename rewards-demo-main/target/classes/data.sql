@@ -1,18 +1,44 @@
-insert into customer(id, name) values (500, 'Venkat');
-insert into customer(id, name) values (501, 'Samhitha');
-insert into customer(id, name) values (502, 'Yashoo');
+-- name=src/main/resources/schema.sql
+CREATE TABLE IF NOT EXISTS billed_transactions (
+                                                   id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                                   transaction_time TIMESTAMP,
+                                                   amount DECIMAL(19,2),
+    billed BOOLEAN,
+    matched BOOLEAN,
+    description VARCHAR(255)
+    );
 
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (101, 'Purchase Product 1', 100, '2020-10-17 10:20:10', 500);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (102, 'Purchase Product 2', 50, '2020-5-01 10:20:10', 500);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (103, 'Purchase Product 3', 120, '2020-10-10 10:20:10', 500);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (104, 'Purchase Product 10', 165.32, '2020-6-07 10:20:10', 500);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (105, 'Purchase Product 20', 45.75, '2020-7-05 10:20:10', 500);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (106, 'Purchase Product 30', 260.50, '2020-5-03 10:20:10', 500);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (109, 'Purchase Product 31', 32.80, '2020-6-18 17:10:10', 500);
+INSERT INTO billed_transactions (transaction_time, amount, billed, matched, description) VALUES
+                                                                                             ('2026-03-01T09:15:00Z', 100.00, true, true, 'Invoice #1001'),
+                                                                                             ('2026-03-01T10:00:00Z', 250.00, false, false, 'Manual entry'),
+                                                                                             ('2026-03-02T11:20:00Z', 75.50, true, false, 'Invoice #1002'),
+                                                                                             ('2026-03-03T13:00:00Z', 300.00, true, true, 'Invoice #1003'),
+                                                                                             ('2026-03-03T14:30:00Z', 10.00, false, true, 'Adjustment');
 
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (110, 'Purchase 9', 200, '2019-10-17 10:20:10', 501);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (111, 'Purchase 9', 400, '2019-6-17 10:20:10', 501);
+CREATE SCHEMA IF NOT EXISTS card_financial_transactions;
 
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (120, 'Purchase Product 400', 35.60, '2020-10-01 12:20:10', 502);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (121, 'Purchase Product 401', 90.50, '2020-10-05 15:00:10', 502);
-insert into custom_transactions(id, description, total, purchase_date, customer_id) values (122, 'Purchase Product 402', 126.14, '2020-10-10 11:30:10', 502);
+CREATE TABLE IF NOT EXISTS card_financial_transactions.wdet_process_log (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    payload VARCHAR(255) NOT NULL,
+    process_status VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS card_financial_transactions.billed_transactions (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    statement_closing_date DATE NOT NULL,
+    amount DECIMAL(19,2),
+    description VARCHAR(255)
+);
+
+INSERT INTO card_financial_transactions.wdet_process_log (payload, process_status) VALUES
+    ('{"stmt_date":"260315"}', 'PROCESSED'),
+    ('{"stmt_date":"260315"}', 'PROCESSED'),
+    ('{"stmt_date":"260315"}', 'PROCESSED'),
+    ('{"stmt_date":"260315"}', 'FAILED'),
+    ('{"stmt_date":"260316"}', 'PROCESSED');
+
+INSERT INTO card_financial_transactions.billed_transactions (statement_closing_date, amount, description) VALUES
+    (DATE '2026-03-15', 100.00, 'Statement billing row 1'),
+    (DATE '2026-03-15', 200.00, 'Statement billing row 2'),
+    (DATE '2026-03-15', 300.00, 'Statement billing row 3'),
+    (DATE '2026-03-16', 150.00, 'Other statement billing row');

@@ -1,0 +1,8 @@
+/Users/venkateshakkara/IdeaProjects/CustomerRewards1/rewards-demo-main/src/main/java/com/api/rewards/repository/BilledTransactionRepository.java
+/Users/venkateshakkara/IdeaProjects/CustomerRewards1/rewards-demo-main/src/main/java/com/api/rewards/entity/BilledTransaction.java
+/Users/venkateshakkara/IdeaProjects/CustomerRewards1/rewards-demo-main/src/main/java/com/api/rewards/dto/TransactionDto.java
+/Users/venkateshakkara/IdeaProjects/CustomerRewards1/rewards-demo-main/src/main/java/com/api/rewards/config/CorsConfig.java
+/Users/venkateshakkara/IdeaProjects/CustomerRewards1/rewards-demo-main/src/main/java/com/api/rewards/dto/TransactionsSummaryDto.java
+/Users/venkateshakkara/IdeaProjects/CustomerRewards1/rewards-demo-main/src/main/java/com/api/rewards/ReportingServiceApplication.java
+/Users/venkateshakkara/IdeaProjects/CustomerRewards1/rewards-demo-main/src/main/java/com/api/rewards/controller/impl/ReportingController.java
+/Users/venkateshakkara/IdeaProjects/CustomerRewards1/rewards-demo-main/src/main/java/com/api/rewards/service/impl/ReportingService.java
